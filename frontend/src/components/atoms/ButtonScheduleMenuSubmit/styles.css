@@ -1,0 +1,7 @@
+.button-schedule-menu-submit {
+    border: none;
+    background: var(--red);
+    border-radius: 0 10px 10px 0;
+    width: 100px;
+    margin-left: 5px;
+}

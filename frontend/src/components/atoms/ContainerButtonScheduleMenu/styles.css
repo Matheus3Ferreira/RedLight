@@ -1,0 +1,18 @@
+.container-button-schedule-menu {
+    background-color: #FFF;
+    width: 180px;
+    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-button-schedule-menu:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.container-button-schedule-menu:last-child {
+    margin-right: 5px;
+    border-radius: 0 10px 10px 0;
+}
+

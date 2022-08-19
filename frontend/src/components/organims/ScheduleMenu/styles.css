@@ -1,0 +1,6 @@
+.schedule-menu-container {
+    display: flex;
+    width: fit-content;
+    background-color: #FFF;
+    border-radius: 10px;
+}
