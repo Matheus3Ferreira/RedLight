@@ -1,0 +1,37 @@
+.disabled-date-picker {
+  display: none;
+}
+
+.sdp {
+  --theme-color: var(--red) !important;
+  --selected-date-color: #FFF !important; /* light-gray color */
+  --font: 'Poppins', sans-serif;
+  color: var(--white);
+  background-color: var(--red);
+  position: absolute;
+}
+
+.sdp--square-btn {
+  background-color: rgb(160, 17, 17);
+}
+
+.sdp--square-btn:hover {
+  filter: brightness(1.25);
+}
+
+.sdp--text__inactive {
+  background-color: rgb(158, 147, 147);
+}
+
+.sdp--dates-grid p {
+  background-color: var(--red);
+  color: #FFF;
+}
+
+.sdp--square-btn {
+  color: #FFF;
+}
+
+.sdp--square-btn__outlined {
+  border: none;
+}
