@@ -1,0 +1,10 @@
+.homepage-template {
+    background-color: #f2f3f5;
+}
+
+.main-homepage-container {
+    padding: 0 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}

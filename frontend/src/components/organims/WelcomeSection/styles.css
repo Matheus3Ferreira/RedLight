@@ -1,0 +1,50 @@
+.welcome-container {
+    width: 100%;
+    max-height: 456px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+}
+
+.background-welcome-container {
+    height: 456px;
+    width: 100%;
+}
+
+.left-welcome-container {
+    position: absolute;
+    padding: 40px;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, #440f0f 70.53%, rgba(0, 0, 0, 0) 100%);
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+}
+
+.left-welcome-container > h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+.left-welcome-container > h2 {
+    font-size: 32px;
+    font-weight: 700;
+}
+.left-welcome-container > p {
+    font-size: 16px;
+    margin: 10px 0 39px 0;
+}
+
+.left-welcome-container > button {
+    width: 170px;
+    height: 55px;
+    left: 40px;
+    top: 300px;
+    border: none;
+    background: linear-gradient(275.98deg, #dd2a2a 0%, #c91c1c 100%);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+}
