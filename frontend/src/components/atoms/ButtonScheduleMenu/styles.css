@@ -9,11 +9,12 @@
     cursor: pointer;
 }
 
-.button-schedule-date {
+.button-schedule-check-in, .button-schedule-check-out {
     justify-content: space-evenly;
 }
 
-.button-schedule-number {
+
+.button-schedule-adults, .button-schedule-children {
     justify-content: space-around;
 }
 

@@ -5,31 +5,31 @@ import {
     IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
-interface OptionProps {
+export interface IOptionProps {
     icon: IconDefinition;
     value: string;
     type: string;
 }
 
-export const DataScheduleOptions: OptionProps[] = [
+export const DataScheduleOptions: IOptionProps[] = [
     {
         icon: faCalendarAlt,
         value: '01/01/2023',
-        type: 'date',
+        type: 'check-in',
     },
     {
         icon: faCalendarAlt,
         value: '02/01/2023',
-        type: 'date',
+        type: 'check-out',
     },
     {
         icon: faUser,
-        value: '0',
-        type: 'number',
+        value: '1',
+        type: 'adults',
     },
     {
         icon: faBaby,
-        value: '1',
-        type: 'number',
+        value: '0',
+        type: 'children',
     },
 ];

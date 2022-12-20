@@ -5,30 +5,64 @@ import { IconFontAwesome } from 'components/atoms/IconFontAwesome/IconFontAwesom
 import { ValueButtonScheduleMenu } from 'components/atoms/ValueButtonScheduleMenu/ValueButtonScheduleMenu';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import './styles.css';
+import { Dispatch, SetStateAction } from 'react';
+import { DayPicker } from 'components/atoms/DayPicker/DayPicker';
 
 interface IProps {
     icon: IconDefinition;
-    value: string;
     type: string;
+    value: string;
+    index: number;
+    buttonPressedId: number;
+    setButtonPressed: Dispatch<SetStateAction<number>>;
 }
 
-export function OptionScheduleMenu({ icon, value, type }: IProps) {
+export function OptionScheduleMenu({
+    icon,
+    type,
+    value,
+    index,
+    buttonPressedId,
+    setButtonPressed,
+}: IProps) {
     return (
-        <ContainerButtonScheduleMenu>
-            {type === 'date' ? (
-                <ButtonScheduleMenu type={type}>
-                    <IconFontAwesome icon={icon} color="#FFF" />
-                    <ValueButtonScheduleMenu value={value} />
-                </ButtonScheduleMenu>
-            ) : (
-                <ButtonScheduleMenu type={type}>
-                    <div className="icon-value-container">
+        <>
+            {type === 'check-in' || type === 'check-out' ? (
+                <ContainerButtonScheduleMenu>
+                    <ButtonScheduleMenu
+                        type={type}
+                        index={index}
+                        pressedFunction={setButtonPressed}
+                        buttonPressedId={buttonPressedId}
+                    >
                         <IconFontAwesome icon={icon} color="#FFF" />
                         <ValueButtonScheduleMenu value={value} />
-                    </div>
-                    <IconFontAwesome icon={faAngleDown} color="#FFF" />
-                </ButtonScheduleMenu>
+                    </ButtonScheduleMenu>
+                    {buttonPressedId === index ? (
+                        <DayPicker
+                            indexButton={index}
+                            buttonPressedId={buttonPressedId}
+                        />
+                    ) : (
+                        <></>
+                    )}
+                </ContainerButtonScheduleMenu>
+            ) : (
+                <ContainerButtonScheduleMenu>
+                    <ButtonScheduleMenu
+                        type={type}
+                        index={index}
+                        pressedFunction={setButtonPressed}
+                        buttonPressedId={buttonPressedId}
+                    >
+                        <div className="icon-value-container">
+                            <IconFontAwesome icon={icon} color="#FFF" />
+                            <ValueButtonScheduleMenu value={value} />
+                        </div>
+                        <IconFontAwesome icon={faAngleDown} color="#FFF" />
+                    </ButtonScheduleMenu>
+                </ContainerButtonScheduleMenu>
             )}
-        </ContainerButtonScheduleMenu>
+        </>
     );
 }
