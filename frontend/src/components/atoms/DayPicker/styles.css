@@ -4,7 +4,7 @@
 
 .sdp {
     --theme-color: var(--red) !important;
-    --selected-date-color: #fff !important; /* light-gray color */
+    --selected-date-color: #fff !important;
     --font: 'Poppins', sans-serif;
     color: var(--white);
     background-color: var(--red);
