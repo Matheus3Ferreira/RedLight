@@ -1,0 +1,13 @@
+.red-gradient-button {
+    width: 170px;
+    height: 55px;
+    left: 40px;
+    top: 300px;
+    border: none;
+    background: linear-gradient(275.98deg, #dd2a2a 0%, #c91c1c 100%);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -1,3 +1,4 @@
+import { ButtonRedGradient } from 'components/molecules/ButtonRedGradient/ButtonRedGradient';
 import './styles.css';
 
 export function WelcomeSection() {
@@ -24,7 +25,7 @@ export function WelcomeSection() {
                     <br />
                     até 40% no PIX.
                 </p>
-                <button>Saiba mais</button>
+                <ButtonRedGradient>Saiba mais</ButtonRedGradient>
             </div>
         </section>
     );

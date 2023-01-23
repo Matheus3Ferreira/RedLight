@@ -27,7 +27,7 @@ export function OptionScheduleMenu({
 }: IProps) {
     return (
         <>
-            {type === 'check-in' || type === 'check-out' ? (
+            {type === 'date' ? (
                 <ContainerButtonScheduleMenu>
                     <ButtonScheduleMenu
                         type={type}

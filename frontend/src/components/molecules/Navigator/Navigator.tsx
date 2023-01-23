@@ -4,10 +4,10 @@ import './styles.css';
 export function Navigator() {
     return (
         <nav className="navOptions">
-            <OptionNavigator text="Rooms" link="#" />
-            <OptionNavigator text="Where we are" link="#" />
-            <OptionNavigator text="Sign In" link="#" bold={true} />
-            <OptionNavigator text="Sign Up" link="#" bold={true} />
+            <OptionNavigator text="Quartos" link="#" />
+            <OptionNavigator text="Onde estamos" link="#" />
+            <OptionNavigator text="Entrar" link="#" bold={true} />
+            <OptionNavigator text="Cadastrar-se" link="#" bold={true} />
         </nav>
     );
 }

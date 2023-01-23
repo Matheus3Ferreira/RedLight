@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Confort {
+  id          String @id @default(uuid())
+  title       String
+  quantity    Int
+  description String
+  room        Room[]
+}
+
+model Room {
+  id         String    @id @default(uuid())
+  title      String
+  confort    Confort[]
+  product    Product   @relation(fields: [productId], references: [id])
+  numberRoom Int       @unique
+  productId  String    @unique
+  capacity   Int
+  bookings   Booking[]
+}
+
+model Bill {
+  id         String   @id @default(uuid())
+  totalPrice Decimal
+  booking    Booking?
+  guest      Guest    @relation(fields: [guestId], references: [id])
+  guestId    String
+  finished   Boolean  @default(false)
+  orders     Order[]
+}
+
+model Order {
+  id        String  @id @default(uuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  bill      Bill    @relation(fields: [billId], references: [id])
+  quantity  Int
+  billId    String
+}
+
+model Product {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  price       Decimal
+  room        Room?
+  Order       Order[]
+}
+
+model Booking {
+  id       String   @id @default(uuid())
+  billId   String   @unique
+  bill     Bill     @relation(fields: [billId], references: [id])
+  checkIn  DateTime
+  checkOut DateTime
+  guestId  String   @unique
+  guest    Guest    @relation(fields: [guestId], references: [id])
+  rooms    Room[]
+}
+
+model Guest {
+  id       String    @id @default(uuid())
+  email    String    @unique
+  password String
+  profile  Profile?
+  Booking  Booking[]
+  Bill     Bill[]
+}
+
+model Profile {
+  id        String   @id @default(uuid())
+  fullName  String
+  birthDate DateTime
+  guestId   String   @unique
+  guest     Guest    @relation(fields: [guestId], references: [id])
+}

@@ -1,3 +1,4 @@
+import { FirstTimeSection } from 'components/organims/FirstTimeSection/FirstTimeSection';
 import { Header } from 'components/organims/Header/Header';
 import { ScheduleMenu } from 'components/organims/ScheduleMenu/ScheduleMenu';
 import { UserRatingSection } from 'components/organims/UserRatingSection/UserRatingSection';
@@ -12,6 +13,7 @@ export function HomepageTemplate() {
                 <ScheduleMenu />
                 <WelcomeSection />
                 <UserRatingSection />
+                <FirstTimeSection />
             </main>
         </div>
     );

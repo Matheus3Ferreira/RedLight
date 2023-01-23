@@ -15,21 +15,21 @@ export const DataScheduleOptions: IOptionProps[] = [
     {
         icon: faCalendarAlt,
         value: '01/01/2023',
-        type: 'check-in',
+        type: 'date',
     },
     {
         icon: faCalendarAlt,
         value: '02/01/2023',
-        type: 'check-out',
+        type: 'date',
     },
     {
         icon: faUser,
         value: '1',
-        type: 'adults',
+        type: 'number',
     },
     {
         icon: faBaby,
         value: '0',
-        type: 'children',
+        type: 'number',
     },
 ];
