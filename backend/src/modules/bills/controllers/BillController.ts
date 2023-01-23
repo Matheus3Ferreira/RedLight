@@ -3,6 +3,7 @@ import createBill from "../services/createBill";
 import { IOrder } from "../../orders/interfaces/IOrder";
 import { createMultipleOrders } from "../../orders/services/createMultipleOrders";
 import { findOneBill } from "../services/findOneBill";
+import { closeBill } from "../services/closeBill";
 
 export default class BillController {
   public async create(req: Request, res: Response) {
@@ -19,7 +20,6 @@ export default class BillController {
     const totalPrice: number = totalPriceOrders.reduce(
       (sum, price) => sum + price
     );
-    console.log("totalPriceOrders: " + totalPriceOrders);
     // create
     const bill = await createBill({
       guestId: data.guestId,
@@ -30,5 +30,14 @@ export default class BillController {
     const insertedOrders = await createMultipleOrders(data.orders, bill.id);
     const updatedBill = await findOneBill(bill.id);
     return res.status(201).json({ updatedBill });
+  }
+  public async close(req: Request, res: Response) {
+    interface IRequest {
+      id: string;
+    }
+
+    const { id }: IRequest = req.body;
+    const billClosed = await closeBill(id);
+    res.json({ bill: billClosed });
   }
 }

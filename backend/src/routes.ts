@@ -16,5 +16,6 @@ routes.post("/guest", Guest.create);
 routes.post("/bill", Bill.create);
 routes.get("/product", Product.list);
 routes.post("/order", Order.create);
+routes.patch("/bill/close", Bill.close);
 
 export default routes;
