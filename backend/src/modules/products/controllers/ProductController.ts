@@ -1,10 +1,9 @@
-import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
+import { IProduct } from "../interfaces/IProduct";
+import { findOneProduct } from "../services/findOneProduct";
 
 export default class ProductController {
-  public async list(req: Request, res: Response) {
-    const prisma = new PrismaClient();
-    const products = await prisma.product.findMany();
-    return res.json(products);
+  public async findOne(req: Request, res: Response) {
+    return res.json(findOneProduct(req.body.id));
   }
 }

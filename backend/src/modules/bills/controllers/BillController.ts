@@ -4,32 +4,22 @@ import { IOrder } from "../../orders/interfaces/IOrder";
 import { createMultipleOrders } from "../../orders/services/createMultipleOrders";
 import { findOneBill } from "../services/findOneBill";
 import { closeBill } from "../services/closeBill";
+import { IProduct } from "../../products/interfaces/IProduct";
+import { calculateTotalPriceOrders } from "../../orders/services/calculateTotalPriceOrders";
 
 export default class BillController {
   public async create(req: Request, res: Response) {
     interface IRequest {
-      guestId: string;
       orders: IOrder[];
+      guestId: string;
     }
-
-    // Create a bill and update with orders
-    const data: IRequest = req.body;
-    const totalPriceOrders: number[] = data.orders.map((order: IOrder) =>
-      order.product ? order.product.price * order.quantity : 0
-    );
-    const totalPrice: number = totalPriceOrders.reduce(
-      (sum, price) => sum + price
-    );
-    // create
-    const bill = await createBill({
-      guestId: data.guestId,
-      totalPrice: totalPrice,
-      orders: [],
+    const { orders, guestId }: IRequest = req.body;
+    const totalPrice = await calculateTotalPriceOrders(orders);
+    const createdBill = await createBill({
+      guestId,
+      orders,
     });
-    // create orders
-    const insertedOrders = await createMultipleOrders(data.orders, bill.id);
-    const updatedBill = await findOneBill(bill.id);
-    return res.status(201).json({ updatedBill });
+    return res.json({ createdBill });
   }
   public async close(req: Request, res: Response) {
     interface IRequest {
@@ -38,6 +28,6 @@ export default class BillController {
 
     const { id }: IRequest = req.body;
     const billClosed = await closeBill(id);
-    res.json({ bill: billClosed });
+    return res.json({ bill: billClosed });
   }
 }

@@ -1,4 +1,4 @@
-import { response, Router } from "express";
+import { Router } from "express";
 import BillController from "./modules/bills/controllers/BillController";
 import BookingController from "./modules/bookings/controllers/BookingController";
 import { GuestController } from "./modules/guests/controllers/GuestController";
@@ -14,8 +14,9 @@ const Order = new OrderController();
 
 routes.post("/guest", Guest.create);
 routes.post("/bill", Bill.create);
-routes.get("/product", Product.list);
-routes.post("/order", Order.create);
 routes.patch("/bill/close", Bill.close);
+routes.get("/product", Product.findOne);
+routes.post("/order", Order.create);
+routes.post("/booking", Booking.create);
 
 export default routes;

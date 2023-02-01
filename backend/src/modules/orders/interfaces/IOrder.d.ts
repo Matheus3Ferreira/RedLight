@@ -5,5 +5,5 @@ export interface IOrder {
   quantity: number;
   product?: IProduct;
   productId: string;
-  billId: string;
+  billId?: string;
 }

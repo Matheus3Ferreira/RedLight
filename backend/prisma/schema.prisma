@@ -63,7 +63,7 @@ model Booking {
   bill     Bill     @relation(fields: [billId], references: [id])
   checkIn  DateTime
   checkOut DateTime
-  guestId  String   @unique
+  guestId  String
   guest    Guest    @relation(fields: [guestId], references: [id])
   rooms    Room[]
 }
