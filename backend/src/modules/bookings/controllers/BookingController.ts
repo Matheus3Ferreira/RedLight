@@ -25,7 +25,11 @@ export default class BookingController {
     const daysBooked = getBookDays(new Date(checkIn), new Date(checkOut));
     const orders: IOrder[] = productsId.map((id) => {
       return {
-        quantity: parseInt(daysBooked.toFixed(0)), // Aumenta 1 se o checkIn e checkOut for quebrado
+        quantity: parseInt(
+          daysBooked % 1 == 0
+            ? daysBooked.toFixed(0)
+            : (daysBooked + 1).toFixed(0)
+        ), // Aumenta 1 se o checkIn e checkOut for quebrado
         productId: id,
       };
     });
