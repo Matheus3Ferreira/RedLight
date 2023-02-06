@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
+import moment from "moment";
 import createBill from "../../bills/services/createBill";
 import { IOrder } from "../../orders/interfaces/IOrder";
 import { findOneProduct } from "../../products/services/findOneProduct";
 import createBooking from "../services/createBooking";
-import getBookDays from "../services/getBookHours";
+import getBookDays from "../services/getBookDays";
 
 export default class BookingController {
   public async create(req: Request, res: Response) {
     interface IRequest {
-      checkIn: string;
-      checkOut: string;
+      checkIn: Date;
+      checkOut: Date;
       guestId: string;
       productsId: string[];
     }
@@ -25,11 +26,7 @@ export default class BookingController {
     const daysBooked = getBookDays(new Date(checkIn), new Date(checkOut));
     const orders: IOrder[] = productsId.map((id) => {
       return {
-        quantity: parseInt(
-          daysBooked % 1 == 0
-            ? daysBooked.toFixed(0)
-            : (daysBooked + 1).toFixed(0)
-        ), // Aumenta 1 se o checkIn e checkOut for quebrado
+        quantity: daysBooked,
         productId: id,
       };
     });
@@ -46,26 +43,12 @@ export default class BookingController {
 
     const booking = await createBooking({
       billId: createdBill.id,
-      checkIn: new Date(checkIn),
-      checkOut: new Date(checkOut),
+      checkIn: moment(checkIn).format(),
+      checkOut: moment(checkOut).format(),
       guestId: guestId,
       rooms: rooms,
     });
 
     return res.json({ createdBill, booking });
-
-    // const { body } = req;
-    // //Gerar conta
-    // const totalPrice = calculateTotalPrice(body.products);
-    // const billData = {
-    //   totalPrice: totalPrice,
-    //   products: body.products.map((product: IProduct) => {
-    //     return { id: product.id };
-    //   }),
-    // };
-    // const bill = await createBill(billData);
-    // //Registrar booking
-    // const createdBooking = await createBooking(body, bill);
-    // return res.json(createdBooking);
   }
 }

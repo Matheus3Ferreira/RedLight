@@ -3,8 +3,8 @@ import { IBill } from "../../bills/interfaces/IBill";
 
 interface IBooking {
   guestId: string;
-  checkIn: Date;
-  checkOut: Date;
+  checkIn: string;
+  checkOut: string;
   billId: string;
   rooms: string[];
 }

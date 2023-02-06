@@ -7,6 +7,5 @@ export default async function findGuestByEmail(email: string) {
       email: email,
     },
   });
-  console.log(guestExists);
-  return !!guestExists;
+  return guestExists;
 }
