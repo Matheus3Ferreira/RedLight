@@ -1,3 +1,24 @@
 .icon-value-container > :last-of-type {
     margin-right: 15px;
 }
+
+.container-button-schedule-menu {
+    background-color: #fff;
+    width: 180px;
+    padding: 10px 5px;
+}
+
+.container-button-schedule-menu:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.container-button-schedule-menu:last-child {
+    margin-right: 5px;
+    border-radius: 0 10px 10px 0;
+}
+
+.button-schedule-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: var(--white);
+}

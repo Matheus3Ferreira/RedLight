@@ -3,3 +3,14 @@
     text-align: center;
     align-items: center;
 }
+
+.nav-option {
+    padding-left: 50px;
+    font-family: 'Poppins', sans-serif;
+    color: #dd2a2a;
+    font-size: 20px;
+    cursor: pointer;
+}
+.bold {
+    font-weight: bold;
+}

@@ -1,13 +1,12 @@
-import { OptionNavigator } from '../../atoms/OptionNavigator/OptionNavigator';
 import './styles.css';
 
 export function Navigator() {
     return (
         <nav className="navOptions">
-            <OptionNavigator text="Quartos" link="#" />
-            <OptionNavigator text="Onde estamos" link="#" />
-            <OptionNavigator text="Entrar" link="#" bold={true} />
-            <OptionNavigator text="Cadastrar-se" link="#" bold={true} />
+            <p className="nav-option">Quartos</p>
+            <p className="nav-option">Onde estamos</p>
+            <p className="nav-option bold">Entrar</p>
+            <p className="nav-option bold">Cadastrar-se</p>
         </nav>
     );
 }

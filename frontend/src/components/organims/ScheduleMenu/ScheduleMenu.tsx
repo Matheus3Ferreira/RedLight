@@ -12,8 +12,7 @@ import {
 
 export function ScheduleMenu() {
     const [buttonPressed, setButtonPressed] = useState<number>(-1);
-    const [optionsData, setOptionsData] =
-        useState<IOptionProps[]>(DataScheduleOptions);
+    const [optionsData] = useState<IOptionProps[]>(DataScheduleOptions);
     return (
         <div>
             <HeaderScheduleMenu />

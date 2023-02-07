@@ -1,0 +1,10 @@
+.container-label-schedule {
+    margin-right: 5px;
+    width: 175px;
+    height: 26px;
+    background: #fff;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}

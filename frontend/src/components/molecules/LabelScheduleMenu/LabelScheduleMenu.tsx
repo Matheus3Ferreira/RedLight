@@ -1,5 +1,5 @@
-import { ContainerTextLabelScheduleMenu } from 'components/atoms/ContainerLabelScheduleMenu/ContainerLabelScheduleMenu';
 import { TextLabelScheduleMenu } from 'components/atoms/TextLabelScheduleMenu/LabelScheduleMenu';
+import './styles.css';
 
 interface IProps {
     text: string;
@@ -7,8 +7,8 @@ interface IProps {
 
 export function LabelScheduleMenu({ text }: IProps) {
     return (
-        <ContainerTextLabelScheduleMenu>
+        <div className="container-label-schedule">
             <TextLabelScheduleMenu text={text} />
-        </ContainerTextLabelScheduleMenu>
+        </div>
     );
 }
