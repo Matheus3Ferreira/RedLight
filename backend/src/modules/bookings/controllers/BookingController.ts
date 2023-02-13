@@ -6,6 +6,7 @@ import { IOrder } from "../../orders/interfaces/IOrder";
 import { findOneRoom } from "../../rooms/services/findOneRoom";
 import createBooking from "../services/createBooking";
 import getBookDays from "../services/getBookDays";
+import { listBookings } from "../services/listBookings";
 
 export default class BookingController {
   public async create(req: Request, res: Response) {
@@ -31,11 +32,9 @@ export default class BookingController {
       )
     );
 
-    const daysBooked = getBookDays(new Date(checkIn), new Date(checkOut));
-
     const orders: IOrder[] = rooms.map((room) => {
       return {
-        quantity: daysBooked,
+        quantity: getBookDays(new Date(checkIn), new Date(checkOut)),
         productId: room.productId,
       };
     });
@@ -51,5 +50,10 @@ export default class BookingController {
     });
 
     return res.status(200).json(booking);
+  }
+  public async list(req: Request, res: Response) {
+    const rooms = await listBookings();
+    console.log(rooms);
+    return res.status(200).json(rooms);
   }
 }

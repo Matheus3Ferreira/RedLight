@@ -20,6 +20,7 @@ routes.patch("/bill/close", Bill.close);
 routes.get("/product", Product.findOne);
 routes.post("/order", Order.create);
 routes.post("/booking", Booking.create);
+routes.get("/booking", Booking.list);
 routes.get("/room", Room.list);
 routes.post("/room", Room.create);
 

@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-export async function findOneRoom() {
+export async function listRooms() {
   const prisma = new PrismaClient();
   const rooms = await prisma.room.findMany({
     select: {
@@ -15,7 +15,6 @@ export async function findOneRoom() {
           quantity: true,
         },
       },
-      bookings: true,
     },
   });
   return rooms;
