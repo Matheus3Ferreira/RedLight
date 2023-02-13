@@ -23,6 +23,30 @@ export default async function createBooking(book: IBooking) {
         }),
       },
     },
+    select: {
+      id: true,
+      checkIn: true,
+      checkOut: true,
+      guest: {
+        select: {
+          email: true,
+          id: true,
+          password: false,
+        },
+      },
+      bill: {
+        select: {
+          totalPrice: true,
+          orders: {
+            select: {
+              product: true,
+              quantity: true,
+            },
+          },
+        },
+      },
+      rooms: true,
+    },
   });
   return await newBooking;
 }

@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
 import createBill from "../services/createBill";
 import { IOrder } from "../../orders/interfaces/IOrder";
-import { createMultipleOrders } from "../../orders/services/createMultipleOrders";
-import { findOneBill } from "../services/findOneBill";
 import { closeBill } from "../services/closeBill";
-import { IProduct } from "../../products/interfaces/IProduct";
 import { calculateTotalPriceOrders } from "../../orders/services/calculateTotalPriceOrders";
 
 export default class BillController {

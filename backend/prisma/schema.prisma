@@ -11,22 +11,32 @@ datasource db {
 }
 
 model Confort {
-  id          String @id @default(uuid())
-  title       String
-  quantity    Int
-  description String
-  room        Room[]
+  id              String            @id @default(uuid())
+  title           String
+  quantity        Int
+  description     String
+  ConfortsOnRooms ConfortsOnRooms[]
+}
+
+model ConfortsOnRooms {
+  id      String  @id @default(uuid())
+  confort Confort @relation(fields: [confortId], references: [id])
+  room    Room    @relation(fields: [roomId], references: [id])
+
+  confortId String
+  roomId    String
+  quantity  Int
 }
 
 model Room {
-  id         String    @id @default(uuid())
-  title      String
-  confort    Confort[]
-  product    Product   @relation(fields: [productId], references: [id])
-  numberRoom Int       @unique
-  productId  String    @unique
-  capacity   Int
-  bookings   Booking[]
+  id              String            @id @default(uuid())
+  title           String
+  product         Product           @relation(fields: [productId], references: [id])
+  numberRoom      String            @unique
+  productId       String
+  capacity        Int
+  bookings        Booking[]
+  ConfortsOnRooms ConfortsOnRooms[]
 }
 
 model Bill {
@@ -53,7 +63,7 @@ model Product {
   title       String
   description String
   price       Decimal
-  room        Room?
+  room        Room[]
   Order       Order[]
 }
 

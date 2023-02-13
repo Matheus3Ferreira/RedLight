@@ -1,8 +1,9 @@
+import { Room } from "@prisma/client";
 import { Request, Response } from "express";
 import moment from "moment";
 import createBill from "../../bills/services/createBill";
 import { IOrder } from "../../orders/interfaces/IOrder";
-import { findOneProduct } from "../../products/services/findOneProduct";
+import { findOneRoom } from "../../rooms/services/findOneRoom";
 import createBooking from "../services/createBooking";
 import getBookDays from "../services/getBookDays";
 
@@ -12,32 +13,32 @@ export default class BookingController {
       checkIn: Date;
       checkOut: Date;
       guestId: string;
-      productsId: string[];
+      roomsId: string[];
     }
 
-    const { checkIn, checkOut, guestId, productsId }: IRequest = req.body;
+    const { checkIn, checkOut, guestId, roomsId }: IRequest = req.body;
     // Get all rooms and products
-    const productsPromises = Promise.all(
-      productsId.map((id) =>
-        findOneProduct({ id: id, include: { room: true } })
+    const rooms: Room[] = await Promise.all(
+      roomsId.map(
+        async (id) =>
+          await findOneRoom({
+            id,
+            include: {
+              bookings: true,
+              product: true,
+            },
+          })
       )
     );
 
     const daysBooked = getBookDays(new Date(checkIn), new Date(checkOut));
-    const orders: IOrder[] = productsId.map((id) => {
+
+    const orders: IOrder[] = rooms.map((room) => {
       return {
         quantity: daysBooked,
-        productId: id,
+        productId: room.productId,
       };
     });
-
-    const rooms = await productsPromises.then((products) =>
-      products.map((product) => {
-        if (product.room === undefined || product.room === null)
-          throw new Error("Invalid room");
-        return product.room.id;
-      })
-    );
 
     const createdBill = await createBill({ guestId, orders });
 
@@ -46,9 +47,9 @@ export default class BookingController {
       checkIn: moment(checkIn).format(),
       checkOut: moment(checkOut).format(),
       guestId: guestId,
-      rooms: rooms,
+      rooms: rooms.map((room) => room.id),
     });
 
-    return res.json({ createdBill, booking });
+    return res.status(200).json(booking);
   }
 }

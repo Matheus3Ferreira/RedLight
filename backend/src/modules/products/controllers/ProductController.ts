@@ -4,6 +4,6 @@ import { findOneProduct } from "../services/findOneProduct";
 
 export default class ProductController {
   public async findOne(req: Request, res: Response) {
-    return res.json(findOneProduct(req.body.id));
+    return res.json(findOneProduct({ id: req.params.id }));
   }
 }

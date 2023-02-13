@@ -4,7 +4,5 @@ export default function getBookDays(checkIn: Date, checkOut: Date): number {
   if (days % 1 == 0) {
     return days;
   }
-  return days % 1 < 0.5
-    ? Number(days.toFixed(0))
-    : Number((days - 1).toFixed(0));
+  return Number(days.toFixed(0));
 }

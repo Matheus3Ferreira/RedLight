@@ -5,5 +5,5 @@ export interface IProduct {
   title: string;
   description: string;
   price: number;
-  room?: Room | null;
+  room?: Room[] | undefined | null;
 }
