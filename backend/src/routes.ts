@@ -23,5 +23,6 @@ routes.post("/booking", Booking.create);
 routes.get("/booking", Booking.list);
 routes.get("/room", Room.list);
 routes.post("/room", Room.create);
+routes.get("/available/rooms", Booking.getAvailableRooms);
 
 export default routes;
