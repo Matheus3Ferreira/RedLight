@@ -1,3 +1,4 @@
+import { DayPicker } from 'components/molecules/DayPicker/DayPicker';
 import { FirstTimeSection } from 'components/organims/FirstTimeSection/FirstTimeSection';
 import { Header } from 'components/organims/Header/Header';
 import { ScheduleMenu } from 'components/organims/ScheduleMenu/ScheduleMenu';
@@ -14,6 +15,7 @@ export function HomepageTemplate() {
                 <WelcomeSection />
                 <UserRatingSection />
                 <FirstTimeSection />
+                <DayPicker />
             </main>
         </div>
     );
