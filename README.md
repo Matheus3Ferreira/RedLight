@@ -1,14 +1,14 @@
 # Redlight Hotel ❤️
 
-### Seu momento relaxante está perto a poucos cliques de você
+### Seu momento relaxante está a poucos cliques de você
 
 ![Homepage prototype](./frontend/public/assets/homepageProt.png "Homepage prototype")
 
 #
 
-## Reserve seu quarto, e curta o melhor hotel no seu estilo!
+## Reserve seu quarto e curta o melhor hotel no seu estilo!
 
-Os quartos se adaptam a você, e não o contrário! De um match neles. 💞 🔥
+Os quartos se adaptam a você e não o contrário! De um match neles. 💞 🔥
 
 ![Rooms page prototype](./frontend/public/assets/roomsProt.png "Rooms page prototype")
 
@@ -22,4 +22,4 @@ Os quartos se adaptam a você, e não o contrário! De um match neles. 💞 🔥
 - Moment
 - MySQL
 
-Being developed by - FerreiraDev
+Sendo desenvolvido por - FerreiraDev
